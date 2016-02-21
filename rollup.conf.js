@@ -5,23 +5,20 @@ import nodeResolve from 'rollup-plugin-node-resolve';
 export default {
     entry: 'js/main.js',
     sourceMap: true,
-    format : 'umd',
+    format: 'umd',
     dest: 'dist/bundle.js',
-    moduleName: 'rollupStarterProject',
+    moduleName: 'rollup-sample',
     plugins: [
-        //babel(),
+        babel({
+            exclude: 'node_modules/**'
+        }),
         nodeResolve({
             jsnext: true,
-            main: true,
-            browser: true
-        })/*,
+            main: true
+        }),
         commonjs({
-            include: 'node_modules/!**',
-            //exclude: [ 'node_modules/foo/!**', 'node_modules/bar/!**' ],
-
-            // search for files other than .js files (must already
-            // be transpiled by a previous plugin!)
-            extensions: [ '.js', '.coffee' ] // defaults to [ '.js' ]
-        })*/
+            include: 'node_modules/**',
+            exclude: ['node_modules/lodash-es/**']
+        })
     ]
 };
