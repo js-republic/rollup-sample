@@ -5,7 +5,7 @@ import nodeResolve from 'rollup-plugin-node-resolve';
 export default {
     entry: 'js/main.js',
     sourceMap: true,
-    format: 'umd',
+    format: 'iife',
     dest: 'dist/bundle.js',
     moduleName: 'rollup-sample',
     plugins: [
@@ -17,7 +17,7 @@ export default {
             main: true
         }),
         commonjs({
-            include: 'node_modules/**',
+            include: 'node_modules/**/**',
             exclude: ['node_modules/lodash-es/**']
         })
     ]
